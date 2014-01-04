@@ -1,4 +1,5 @@
 #!/bin/bash
 cp ~/.vimrc ./vimrc
 cp ~/.bashrc ./bashrc
+cp ~/.vim/bundle/jellybeans/colors/jellybeans.vim ./jellybeans.vim
 

@@ -11,10 +11,12 @@ call pathogen#helptags()
 " Look fancy"{{{
 " Feedback stuff
 filetype plugin indent on
+set cursorline
 set showcmd
 set number
 set scrolloff=3
 set title
+set nospell
 "set completeopt-=preview
 let &t_Co=256
 " Statusline
@@ -22,7 +24,7 @@ let &t_Co=256
 "set statusline+=%y      
 "set laststatus=2
 " Colors
-colorscheme jellybeans "github256, distinguished
+colorscheme jellybeans "darkocean jellybeans github256, distinguished
 " GVim stuff
 set guifont=Monospace\ 8
 set guioptions-=T  "remove toolbar
@@ -119,7 +121,7 @@ map <leader>nt :NERDTree <CR>
 "autocmd FileType python set omnifunc=pythoncomplete#Complete
 " Airline
 let g:airline#extensions#whitespace#enabled = 0
-let g:airline_theme='jellybeans'
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
 "}}}
@@ -128,15 +130,15 @@ let g:airline_right_sep = '◀'
 " Displaying specific file formats"{{{
 " Prose gives us a prose-like environment
 function! Prose()
-    setlocal spell
     noremap <buffer> j gj
     noremap <buffer> k gk
     setlocal formatoptions=1
     setlocal linebreak
     setlocal wrap
     setlocal spell spelllang=en_gb
+    setlocal nocursorline
     :NoMatchParen
-    colorscheme github256
+    "colorscheme github256
 endfunction
 "}}}
 
@@ -162,3 +164,10 @@ endfunction
 au VimEnter * nested :call LoadSession()
 au VimLeave * :call MakeSession()
 "}}}
+"
+"
+"***************************
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
