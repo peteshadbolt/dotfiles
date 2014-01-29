@@ -11,6 +11,8 @@ call pathogen#helptags()
 " Look fancy"{{{
 " Feedback stuff
 filetype plugin indent on
+syntax on 
+set shortmess +=I
 set cursorline
 set showcmd
 set number
@@ -20,13 +22,13 @@ set nospell
 "set completeopt-=preview
 let &t_Co=256
 " Statusline
-"set statusline=%F
-"set statusline+=%y      
-"set laststatus=2
+set statusline=%F
+set statusline+=%y      
+"
 " Colors
 colorscheme jellybeans "darkocean jellybeans github256, distinguished
 " GVim stuff
-set guifont=Monospace\ 8
+set guifont=Monospace\ 9
 set guioptions-=T  "remove toolbar
 set guioptions-=m
 set guioptions-=r
@@ -39,7 +41,6 @@ setglobal guioptions-=h
 setglobal guioptions-=e
 set mouse=a
 set nowrap
-syntax on 
 "}}}
 
 " **********************************************
@@ -62,7 +63,10 @@ set nowritebackup
 set noswapfile
 
 " Automatically cd to the dir of the current file
-set autochdir
+"set autochdir
+" does the below fix vimgrep?
+"autocmd BufEnter * silent! lcd %:p:h
+" seems to
 set autoread
 "}}}
 
@@ -120,54 +124,44 @@ map <leader>nt :NERDTree <CR>
 "set runtimepath^=~/.vim/bundle/ctrlp.vim
 "autocmd FileType python set omnifunc=pythoncomplete#Complete
 " Airline
+set laststatus=2
 let g:airline#extensions#whitespace#enabled = 0
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+"let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
+let g:airline_section_c = '%F'
+"let g:bufferline_echo = 1
 "}}}
+
+" **********************************************
+" Try to save marks and jumps I guess?
+"au BufWinLeave * mkview
+"au BufWinEnter * silent loadview
+set viminfo='100,f1
 
 " **********************************************
 " Displaying specific file formats"{{{
 " Prose gives us a prose-like environment
-function! Prose()
-    noremap <buffer> j gj
-    noremap <buffer> k gk
-    setlocal formatoptions=1
-    setlocal linebreak
-    setlocal wrap
-    setlocal spell spelllang=en_gb
-    setlocal nocursorline
-    :NoMatchParen
-    "colorscheme github256
-endfunction
+"function! Prose()
+"   noremap <buffer> j gj
+"   noremap <buffer> k gk
+"   setlocal formatoptions=1
+"   setlocal linebreak
+"   setlocal wrap
+"   setlocal spell spelllang=en_gb
+"   setlocal nocursorline
+"   :NoMatchParen
+"endfunction
 "}}}
 
 " Latex and markdown are prose-like"{{{
 " TODO: This should use the :filetype plugin
-au BufRead,BufNewFile *.tex,*.md,*.mkd call Prose()
+" au BufRead,BufNewFile *.tex,*.md,*.mkd call Prose()
 "}}}
 
-" **********************************************
-" Saving settings"{{{
-function! MakeSession()
-  let b:filename = $HOME . "/.vim/sessions/session.vim" 
-  exe "mksession! " . b:filename
-endfunction
-
-function! LoadSession()
-  if argc()==0
-      let b:filename = $HOME . "/.vim/sessions/session.vim"
-      exe 'source ' b:filename
-      echo "Loaded session!"
-  endif
-endfunction
-au VimEnter * nested :call LoadSession()
-au VimLeave * :call MakeSession()
-"}}}
-"
-"
 "***************************
-map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+" For checking colormaps
+" map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+" \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+" \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
