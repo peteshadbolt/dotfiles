@@ -63,7 +63,7 @@ set nowritebackup
 set noswapfile
 
 " Automatically cd to the dir of the current file
-"set autochdir
+set autochdir
 " does the below fix vimgrep?
 "autocmd BufEnter * silent! lcd %:p:h
 " seems to
