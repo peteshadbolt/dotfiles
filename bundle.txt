@@ -1,0 +1,15 @@
+darkocean
+github256
+jellybeans
+mustang
+nerdcommenter
+nerdtree
+supertab
+tlib_vim
+vim-addon-mw-utils
+vim-airline~
+vim-distinguished
+vim-fugitive
+vim-snipmate
+vim-snippets
+vim-surround
