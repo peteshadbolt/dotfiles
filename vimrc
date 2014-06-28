@@ -24,7 +24,7 @@ let &t_Co=256
 " Colors
 colorscheme jellybeans "darkocean jellybeans github256, distinguished
 " GVim stuff
-set guifont=Monospace\ 10
+set guifont=Monospace\ 11
 set guioptions-=T  "remove toolbar
 set guioptions-=m
 set guioptions-=r
@@ -45,7 +45,7 @@ set statusline+=%1*%<\                      " cut at start
 set statusline+=[%n%H%M%R%W]\               " flags and buf no
 set statusline+=%-40f\                      " path
 set statusline+=%=%y\                       " file type
-set statusline+=%{&ff} "file format
+set statusline+=%{&ff}                      "file format
 set statusline+=%10((%l,%c)%)\              " line and column
 set statusline+=%P%*                        " percentage of file
 set laststatus=2
@@ -86,7 +86,7 @@ set incsearch
 set wildignore=*.swp,*.bak,*.pyc,*.class,*.pdf,*.png,*.jpg
 
 " **********************************************
-" Ban arrow keys"
+" Ban arrow keys and F1"
 inoremap  <Up>     <NOP>
 inoremap  <Down>   <NOP>
 inoremap  <Left>   <NOP>
@@ -95,6 +95,8 @@ noremap   <Up>     <NOP>
 noremap   <Down>   <NOP>
 noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
+nmap <F1> :echo<CR>
+imap <F1> <C-o>:echo<CR>
 "
 " Change directory to this file
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
