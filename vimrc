@@ -18,7 +18,6 @@ set number
 set scrolloff=3
 set title
 set nospell
-"set completeopt-=preview
 let &t_Co=256
 
 " Colors
@@ -126,8 +125,34 @@ map <leader>rt :w <CR> :!pdflatex % <CR>
 let NERDTreeShowBookmarks=1
 let NERDTreeQuitOnOpen=1
 map <leader>nt :NERDTree <CR>
-" Snipmate
-let g:snippets_dir = "~/.vim/bundle/vim-snippets/snippets"
+" Ctrl-P
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+" Neocomplete
+let g:neocomplete#enable_at_startup = 1
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplete#close_popup()
+inoremap <expr><C-e>  neocomplete#cancel_popup()
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+set completeopt-=preview
+" Neosnip
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<TAB>"
+
 
 " **********************************************
 " Try to save marks and jumps I guess?
