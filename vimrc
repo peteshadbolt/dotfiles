@@ -24,7 +24,7 @@ let &t_Co=256
 " Colors
 colorscheme jellybeans "darkocean jellybeans github256, distinguished
 " GVim stuff
-set guifont=Monospace\ 11
+set guifont=Monospace\ 9
 set guioptions-=T  "remove toolbar
 set guioptions-=m
 set guioptions-=r
@@ -65,6 +65,10 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
+
+" **********************************************
+" Disable annoying auto-comments
+autocmd FileType * setlocal formatoptions-=ro
 
 " **********************************************
 " Filesystem etc"
@@ -108,6 +112,7 @@ nmap <silent> <c-j> :wincmd j<CR>
 nmap <silent> <c-l> :wincmd l<CR>
 nmap <silent> <c-h> :wincmd h<CR>
 map <F2> :b# <CR> 
+map <F12> :w <CR> :make! <CR>
 
 " **********************************************
 " Running python, latex "
@@ -136,5 +141,5 @@ set viminfo='100,f1
 " \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 " \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
-command! ShareScreen set guifont=Monospace\ 12
-
+command! ShareScreen set guifont=Monospace\ 13
+command! UnShare set guifont=Monospace\ 9

@@ -13,6 +13,8 @@
 # Files
 data.location=/home/pete/.task
 
+color=off
+
 # Color theme (uncomment one to use)
 #include /usr/share/doc/task/rc/light-16.theme
 #include /usr/share/doc/task/rc/light-256.theme
@@ -29,16 +31,14 @@ data.location=/home/pete/.task
 defaultwidth=200 # Without ncurses, assumed width, make this large or it will wrap in the shadowfile and look strange in conky
 #
 # Shadow file support
-shadow.file=/tmp/shadow.txt # Location of shadow file
-shadow.command=conky # Task command for shadow file
+#shadow.file=/home/pete/.taskshadow # Location of shadow file
+#shadow.command=conky # Task command for shadow file
 #shadow.notify=on # Footnote when updated
 
-color=off
-
 # task conky
-report.conky.description=Shows the newest tasks
-report.conky.columns=priority,description,project
-report.conky.labels=
-report.conky.sort=priority-
-report.conky.filter=status:pending limit:6
-report.conky.dateformat=m/d
+#report.conky.description=Shows the newest tasks
+#report.conky.columns=priority,description,project
+#report.conky.labels=
+#report.conky.sort=priority-
+#report.conky.filter=status:pending limit:6
+#report.conky.dateformat=m/d
