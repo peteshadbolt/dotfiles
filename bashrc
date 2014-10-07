@@ -1,5 +1,5 @@
 # Google app engine
-export GAE="/opt/google_appengine"
+export GAE="/home/pete/.gae/bin/"
 export PATH="$PATH:$GAE"
 
 # Go
