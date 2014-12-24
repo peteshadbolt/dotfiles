@@ -23,8 +23,9 @@ let &t_Co=256
 " Colors
 colorscheme jellybeans "darkocean jellybeans github256, distinguished
 " GVim stuff
-set guifont=Monospace\ 9
+set guifont=Monospace\ 10
 set guioptions-=T  "remove toolbar
+set guioptions-=t  
 set guioptions-=m
 set guioptions-=r
 setglobal guioptions-=L
@@ -34,6 +35,7 @@ setglobal guioptions-=r
 setglobal guioptions-=b
 setglobal guioptions-=h
 setglobal guioptions-=e
+
 set mouse=a
 set nowrap
 
@@ -43,6 +45,7 @@ set statusline=
 set statusline+=%1*%<\                      " cut at start
 set statusline+=[%n%H%M%R%W]\               " flags and buf no
 set statusline+=%-40f\                      " path
+set statusline+=%{fugitive#statusline()}
 set statusline+=%=%y\                       " file type
 set statusline+=%{&ff}                      "file format
 set statusline+=%10((%l,%c)%)\              " line and column
@@ -68,6 +71,11 @@ set expandtab
 " **********************************************
 " Disable annoying auto-comments
 autocmd FileType * setlocal formatoptions-=ro
+
+" **********************************************
+" Dont accidentally make macros
+nnoremap <C-q> q
+nnoremap q <Nop>
 
 " **********************************************
 " Filesystem etc"
@@ -127,6 +135,8 @@ let NERDTreeQuitOnOpen=1
 map <leader>nt :NERDTree <CR>
 " Ctrl-P
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_max_files=1000
+let g:ctrlp_max_depth=3
 " Neocomplete
 let g:neocomplete#enable_at_startup = 1
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
