@@ -1,3 +1,5 @@
+align
+chuck.vim
 ctrlp
 jellybeans
 neocomplete
@@ -11,5 +13,7 @@ tlib_vim
 vim-addon-mw-utils
 vim-airline~
 vim-fugitive
+vim-json
 vim-snippets
 vim-surround
+yankring~

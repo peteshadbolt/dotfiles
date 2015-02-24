@@ -16,6 +16,14 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 # Utils
 alias hist='history | grep'         
+alias want='xdg-open &>/dev/null'
 
-### Added by the Heroku Toolbelt
+# Heroku
 export PATH="/usr/local/heroku/bin:$PATH"
+
+# Nim
+export PATH="/home/pete/.nim/bin:$PATH"
+export PATH="/home/pete/.nimble/bin:$PATH"
+
+# Nose
+export NOSE_REDNOSE=1

@@ -23,7 +23,7 @@ let &t_Co=256
 " Colors
 colorscheme jellybeans "darkocean jellybeans github256, distinguished
 " GVim stuff
-set guifont=Monospace\ 10
+set guifont=Monospace\ 9
 set guioptions-=T  "remove toolbar
 set guioptions-=t  
 set guioptions-=m
@@ -40,7 +40,7 @@ set mouse=a
 set nowrap
 
 " Statusline
-hi User1 ctermbg=black ctermfg=white   guibg=black guifg=white
+hi User1 ctermbg=black ctermfg=white   guibg=#333333 guifg=white
 set statusline=
 set statusline+=%1*%<\                      " cut at start
 set statusline+=[%n%H%M%R%W]\               " flags and buf no
@@ -120,6 +120,7 @@ nmap <silent> <c-l> :wincmd l<CR>
 nmap <silent> <c-h> :wincmd h<CR>
 map <F2> :b# <CR> 
 map <F12> :w <CR> :make! <CR>
+map <F10> :w <CR> :!./run.sh <CR>
 
 " **********************************************
 " Running python, latex "
@@ -164,7 +165,6 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \: "\<TAB>"
 "Tagbar
 nmap <F8> :TagbarToggle<CR>
-
 
 " **********************************************
 " Try to save marks and jumps I guess?
